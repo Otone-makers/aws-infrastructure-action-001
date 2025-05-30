@@ -1,0 +1,40 @@
+
+Automating AWS Infrastructure using Terraform and Deploying static website
+
+***Requirement**
+VS Code [Pre-installed(terraform, AWS CLI, And other extensions.)]
+AWS console
+
+***Architecture**
+Internet gateway
+Multi -AZ Pivate VPC
+Application Load Balancer 
+public subnet
+Amazon S3 Integration
+
+# Step 1:
+***Configure VS Code in project details, project Architecture:***
+provider.tf
+main.tf
+variables.tf
+userdata1.sh
+userdata2.sh
+
+# Step 2:
+***configure “AWS configure on CLI” using AWS Access Key ID, and AWS Secret Access Key.***
+$ aws configure
+AWS Access Key ID:
+AWS Secret Access Key:
+Default region name:
+Default output format: None
+
+# Step 3:
+open your load balancer and copy and paste your DNs name to your web browser.
+
+
+
+
+#       ***Reference:***
+https://www.youtube.com/watch?v=Koabqyopqns
+
+https://medium.com/@rvaradharajan69/terraform-based-multi-az-private-vpc-architecture-with-alb-s3-integration-a588eea3da66
