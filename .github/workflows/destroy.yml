@@ -1,0 +1,51 @@
+name: "AWS Infrastructure"
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  terraform:
+    name: "Terraform"
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: .
+    permissions:
+      id-token: write
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@master
+        with:
+          aws-region: us-east-2
+          role-to-assume: arn:aws:iam::943169211906:role/Githubconnect
+          role-session-name: githubworkflowsession
+          audience: sts.amazonaws.com
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v1
+        with:
+          terraform_version: 1.0.1
+          terraform_wrapper: false
+
+      - name: Terraform Format
+        id: fmt
+        run: terraform fmt -check
+        continue-on-error: true  
+ 
+      - name: Terraform Init
+        id: init
+        run: terraform init
+        
+      - name: Terraform Destroy
+        id: destroy
+        run: terraform destroy -auto-approve
+         
+ 
