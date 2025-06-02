@@ -1,4 +1,4 @@
-name: "AWS Infrastructure"
+name: "Terraform Destroy"
 
 on:
   push:
