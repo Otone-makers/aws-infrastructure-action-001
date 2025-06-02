@@ -72,7 +72,7 @@ resource "aws_security_group" "websg" {
 }
 
 resource "aws_s3_bucket" "example" {
-  bucket = "learning2025amakisi"
+  bucket = var.my_bucket_name # Name of the S3 bucket
 }
 
 resource "aws_s3_bucket_ownership_controls" "example" {
